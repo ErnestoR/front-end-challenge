@@ -10,4 +10,4 @@ import Button from '../../components/atoms/Button';
 storiesOf('Atoms', module)
   .addDecorator(backgrounds)
   .add('Logo', () => <Logo />)
-  .add('Button', () => <Button />);
+  .add('Button', () => <Button text="Ayuda" />);

@@ -1,3 +1,7 @@
+.body {
+  background-color: var(--Background-Navy);
+}
+
 .App {
   text-align: center;
 }

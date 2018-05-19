@@ -1,0 +1,21 @@
+.b-button {
+  background-color: transparent;
+  border: none;
+  color: var(--Light-Text);
+  margin: 5px 10px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+.b-button:hover {
+  background-color: var(--Regular-Navy);
+}
+
+.b-button:active {
+  background-color: var(--Dark-Navy);
+}

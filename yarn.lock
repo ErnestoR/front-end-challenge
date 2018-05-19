@@ -17,6 +17,14 @@
     react-inspector "^2.2.2"
     uuid "^3.2.1"
 
+"@storybook/addon-backgrounds@^3.4.5":
+  version "3.4.5"
+  resolved "https://registry.npmjs.org/@storybook/addon-backgrounds/-/addon-backgrounds-3.4.5.tgz#6e81b10f8de7941f2132600041e28d9f98bff71e"
+  dependencies:
+    babel-runtime "^6.26.0"
+    global "^4.3.2"
+    prop-types "^15.6.1"
+
 "@storybook/addon-links@3.4.5", "@storybook/addon-links@^3.4.5":
   version "3.4.5"
   resolved "https://registry.npmjs.org/@storybook/addon-links/-/addon-links-3.4.5.tgz#c885dae976f5084faa0ae026755f2d6068da034f"

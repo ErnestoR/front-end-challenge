@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './Button.css';
+import Button from '@material-ui/core/Button';
 
-const Button = ({ name, className = '', text, onClick }) => (
-  <button name={name} className={`b-button ${className}`} onClick={onClick}>
+const BButton = ({ name, className = '', text, onClick }) => (
+  <Button name={name} onClick={onClick}>
     {text}
-  </button>
+  </Button>
 );
 
-export default Button;
+export default BButton;

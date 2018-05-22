@@ -6,8 +6,10 @@ import { backgrounds } from '../backgrounds';
 
 import Logo from '../../components/atoms/Logo';
 import Button from '../../components/atoms/Button';
+import Dropdown from '../../components/atoms/Dropdown';
 
 storiesOf('Atoms', module)
   .addDecorator(backgrounds)
   .add('Logo', () => <Logo />)
-  .add('Button', () => <Button text="Ayuda" />);
+  .add('Button', () => <Button text="Ayuda" />)
+  .add('Dropdown', () => <Dropdown />);

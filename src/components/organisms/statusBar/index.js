@@ -1,6 +1,7 @@
 import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import { MenuButton, Dropdown } from '../../atoms/Select';
+import DisplayField from '../../atoms/DisplayField';
 
 const StatusBar = () => (
   <Toolbar>
@@ -17,6 +18,7 @@ const StatusBar = () => (
         },
       ]}
     />
+    <DisplayField label="Volumen 24 hrs." value="170.5405818 BTC" />
   </Toolbar>
 );
 

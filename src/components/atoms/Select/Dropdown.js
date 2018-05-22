@@ -18,7 +18,11 @@ class Dropdown extends Component {
     return (
       <div>
         <Select value={this.state.value} onChange={this.handleChange} displayEmpty name={name}>
-          {items.map(item => <MenuItem value={item.value}>{item.text}</MenuItem>)}
+          {items.map((item, i) => (
+            <MenuItem key={i} value={item.value}>
+              {item.text}
+            </MenuItem>
+          ))}
         </Select>
       </div>
     );

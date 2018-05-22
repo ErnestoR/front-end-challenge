@@ -41,6 +41,12 @@
     scroll "^2.0.3"
     warning "^3.0.0"
 
+"@material-ui/icons@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@material-ui/icons/-/icons-1.0.0.tgz#0cac779257de02538be8834e1b0e45b7cd2cb898"
+  dependencies:
+    recompose "^0.26.0 || ^0.27.0"
+
 "@storybook/addon-actions@3.4.5", "@storybook/addon-actions@^3.4.5":
   version "3.4.5"
   resolved "https://registry.npmjs.org/@storybook/addon-actions/-/addon-actions-3.4.5.tgz#ba0d0c0c74357c0852e0b890b404214975df40a8"

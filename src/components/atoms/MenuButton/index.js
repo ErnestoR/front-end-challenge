@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { ExpandMore } from '@material-ui/icons';
 
 class MenuButton extends Component {
   state = {
@@ -28,6 +29,7 @@ class MenuButton extends Component {
           onClick={this.handleClick}
         >
           {buttonText}
+          <ExpandMore />
         </Button>
         <Menu
           id="simple-menu"

@@ -1,12 +1,22 @@
 import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
+import { withStyles } from '@material-ui/core/styles';
+
 import { MenuButton, Dropdown } from '../../atoms/Select';
 import DisplayField from '../../atoms/DisplayField';
 
-const StatusBar = () => (
+const styles = theme => ({
+  bitsoDropDown: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+  },
+});
+
+const StatusBar = props => (
   <Toolbar>
     <Dropdown
-      value={1}
+      className={props.classes.bitsoDropDown}
+      value={2}
       items={[
         {
           value: 1,
@@ -19,7 +29,10 @@ const StatusBar = () => (
       ]}
     />
     <DisplayField label="Volumen 24 hrs." value="170.5405818 BTC" />
+    <DisplayField label="Max." value="304.934.23 MXN" />
+    <DisplayField label="Min." value="274.934.23 MXN" />
+    <DisplayField label="Variacion" value="+4,061.68 MXN (1.4%)" />
   </Toolbar>
 );
 
-export default StatusBar;
+export default withStyles(styles)(StatusBar);

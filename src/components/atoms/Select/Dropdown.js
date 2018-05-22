@@ -13,10 +13,10 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { name, children, items = [] } = this.props;
+    const { className, name, children, items = [] } = this.props;
 
     return (
-      <div>
+      <div className={className}>
         <Select value={this.state.value} onChange={this.handleChange} displayEmpty name={name}>
           {items.map((item, i) => (
             <MenuItem key={i} value={item.value}>

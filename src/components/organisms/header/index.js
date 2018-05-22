@@ -11,18 +11,21 @@ import Logo from '../../atoms/Logo';
 import Button from '../../atoms/Button';
 import { MenuButton, Dropdown } from '../../atoms/Select';
 
-const styles = {
+const styles = theme => ({
   flex: {
     flex: 1,
     textAlign: 'end',
   },
-};
+  header: {
+    backgroundColor: theme.bitsoColors.navyHeaders,
+  },
+});
 
 const Header = props => {
   const { classes } = props;
   return (
     <header className="App-header">
-      <AppBar position="static" color="default">
+      <AppBar position="static" className={classes.header}>
         <Toolbar>
           <Logo />
           <Typography variant="title" color="inherit">

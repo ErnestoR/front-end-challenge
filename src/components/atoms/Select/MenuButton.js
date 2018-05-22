@@ -37,8 +37,9 @@ class MenuButton extends Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          {menuItems.map(item => (
+          {menuItems.map((item, i) => (
             <MenuItem
+              key={i}
               onClick={() => {
                 this.handleClose();
                 item.onClick();

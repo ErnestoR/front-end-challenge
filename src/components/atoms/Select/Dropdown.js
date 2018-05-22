@@ -12,17 +12,13 @@ class Dropdown extends Component {
     this.setState({ value: event.target.value });
   };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
   render() {
-    const { name, children } = this.props;
+    const { name, children, items = [] } = this.props;
 
     return (
       <div>
         <Select value={this.state.value} onChange={this.handleChange} displayEmpty name={name}>
-          {children}
+          {items.map(item => <MenuItem value={item.value}>{item.text}</MenuItem>)}
         </Select>
       </div>
     );

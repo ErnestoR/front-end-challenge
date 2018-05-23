@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-import Header from './components/header';
-import StatusBar from './components/statusBar';
-import LastTrades from './components/lastTrades';
+import Header from './components/Header';
+import StatusBar from './components/StatusBar';
+import LastTrades from './components/LastTrades';
 
 import './App.css';
 

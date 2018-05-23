@@ -6,6 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -19,24 +20,19 @@ const styles = theme => ({
 });
 
 let id = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(time, price, amount) {
   id += 1;
-  return { id, name, calories, fat, carbs, protein };
+  return { id, time, price, amount };
 }
 
-const data = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+const data = [createData(new Date(), (Math.random(3) * 1000).toFixed(0), Math.random(3) * 1000)];
 
 function SimpleTable(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
+      <Typography>test</Typography>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -49,9 +45,9 @@ function SimpleTable(props) {
           {data.map(n => {
             return (
               <TableRow key={n.id}>
-                <TableCell>{n.name}</TableCell>
-                <TableCell numeric>{n.calories}</TableCell>
-                <TableCell numeric>{n.fat}</TableCell>
+                <TableCell>{n.time.toLocaleDateString()}</TableCell>
+                <TableCell numeric>{n.price}</TableCell>
+                <TableCell numeric>{n.amount}</TableCell>
               </TableRow>
             );
           })}

@@ -2,8 +2,8 @@ import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import { withStyles } from '@material-ui/core/styles';
 
-import { MenuButton, Dropdown } from '../../atoms/Select';
-import DisplayField from '../../atoms/DisplayField';
+import { MenuButton, Dropdown } from '../Select';
+import DisplayField from '../DisplayField';
 
 const styles = theme => ({
   bitsoDropDown: {

@@ -7,11 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 
-import Logo from '../../atoms/Logo';
-import Button from '../../atoms/Button';
-import { MenuButton, Dropdown } from '../../atoms/Select';
+import Logo from '../Logo';
+import Button from '../Button';
+import { MenuButton, Dropdown } from '../Select';
 
 const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
   flex: {
     flex: 1,
     textAlign: 'end',
@@ -24,7 +27,7 @@ const styles = theme => ({
 const Header = props => {
   const { classes } = props;
   return (
-    <header className="App-header">
+    <header className="App-header" className={classes.root}>
       <AppBar position="static" className={classes.header}>
         <Toolbar>
           <Logo />

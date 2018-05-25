@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-import Header from './components/Header';
+import Header from './containers/Header';
 import StatusBar from './components/StatusBar';
 import LastTrades from './components/LastTrades';
 

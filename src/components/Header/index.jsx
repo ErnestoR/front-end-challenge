@@ -20,12 +20,12 @@ const styles = theme => ({
     textAlign: 'end',
   },
   header: {
-    backgroundColor: theme.bitsoColors.regularNavy,
+    backgroundColor: theme.header[theme.palette.type].backgroundColor,
   },
 });
 
 const Header = props => {
-  const { classes } = props;
+  const { classes, theme } = props;
   return (
     <header className="App-header" className={classes.root}>
       <AppBar position="static" className={classes.header}>
@@ -51,7 +51,7 @@ const Header = props => {
             buttonText="Usuario"
             menuItems={[{ text: 'lorem', onClick: () => {} }, { text: 'ipsum', onClick: () => {} }]}
           />
-          <Switch value="checkedA" />
+          <Switch value="theme" color="secondary" checked={theme === 'dark'} />
         </Toolbar>
       </AppBar>
     </header>

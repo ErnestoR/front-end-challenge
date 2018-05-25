@@ -1,6 +1,9 @@
-import React, { Children } from 'react';
+import React from 'react';
+import { String } from 'prop-types';
+import { connect } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
 import '../assets/Fonts/DINPro-Regular.otf';
 
 export const bitsoColors = {
@@ -26,28 +29,47 @@ export const bitsoColors = {
   bitcoinYellow: '#ebc256',
 };
 
-export const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-    background: {
-      default: '#191e23',
+export const theme = type =>
+  createMuiTheme({
+    palette: {
+      type,
+      primary: {
+        light: '#f0f2f2',
+        main: '#f0f2f2',
+        dark: bitsoColors.backgroundNavy,
+      },
     },
-  },
-  typography: {
-    fontFamily: ['DINPro-Regular', 'Arial', 'sans-serif'].join(','),
-    button: {
-      color: bitsoColors.lightText,
-      textTransform: 'none',
+    typography: {
+      fontFamily: ['DINPro-Regular', 'Arial', 'sans-serif'].join(','),
+      button: {
+        color: bitsoColors.lightText,
+        textTransform: 'none',
+      },
     },
-  },
-  bitsoColors,
-});
+    header: {
+      light: {
+        backgroundColor: '#f0f2f2',
+      },
+      dark: {
+        backgroundColor: bitsoColors.regularNavy,
+      },
+    },
+    bitsoColors,
+  });
 
-const ThemeProvider = ({ children }) => (
-  <MuiThemeProvider theme={theme}>
+const ThemeProvider = ({ themeType, children }) => (
+  <MuiThemeProvider theme={theme(themeType)}>
     <CssBaseline />
     {children}
   </MuiThemeProvider>
 );
 
-export default ThemeProvider;
+ThemeProvider.prototype = {
+  theme: String,
+};
+
+const mapStateToProps = state => ({
+  themeType: state.App.theme,
+});
+
+export default connect(mapStateToProps)(ThemeProvider);

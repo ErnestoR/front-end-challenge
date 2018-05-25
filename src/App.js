@@ -10,6 +10,7 @@ import './App.css';
 const styles = theme => ({
   container: {
     display: 'flex',
+    padding: theme.spacing.unit,
   },
 });
 

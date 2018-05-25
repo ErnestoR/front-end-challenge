@@ -11,28 +11,71 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    padding: theme.spacing.unit,
   },
   table: {
     width: 300,
   },
+  header: {
+    padding: theme.spacing.unit,
+    backgroundColor: theme.bitsoColors.mediumNavy,
+  },
+  sale: {
+    color: theme.bitsoColors.mediumGreen,
+  },
+  buy: {
+    color: theme.bitsoColors.darkRed,
+  },
 });
 
 let id = 0;
-function createData(time, price, amount) {
+function createData(time, price, amount, type) {
   id += 1;
-  return { id, time, price, amount };
+  return { id, time, price, amount, type };
 }
 
-const data = [createData(new Date(), (Math.random(3) * 1000).toFixed(0), Math.random(3) * 1000)];
+const data = [
+  createData(
+    new Date(),
+    (Math.random(3) * 1000).toFixed(0),
+    Math.random(3) * 1000,
+    Math.round(Math.random()) === 1 ? 'sale' : 'buy'
+  ),
+  createData(
+    new Date(),
+    (Math.random(3) * 1000).toFixed(0),
+    Math.random(3) * 1000,
+    Math.round(Math.random()) === 1 ? 'sale' : 'buy'
+  ),
+  createData(
+    new Date(),
+    (Math.random(3) * 1000).toFixed(0),
+    Math.random(3) * 1000,
+    Math.round(Math.random()) === 1 ? 'sale' : 'buy'
+  ),
+  createData(
+    new Date(),
+    (Math.random(3) * 1000).toFixed(0),
+    Math.random(3) * 1000,
+    Math.round(Math.random()) === 1 ? 'sale' : 'buy'
+  ),
+  createData(
+    new Date(),
+    (Math.random(3) * 1000).toFixed(0),
+    Math.random(3) * 1000,
+    Math.round(Math.random()) === 1 ? 'sale' : 'buy'
+  ),
+];
 
 function SimpleTable(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
-      <Typography>test</Typography>
+      <div className={classes.header}>
+        <Typography>ULTIMOS TRADES</Typography>
+      </div>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
@@ -46,7 +89,9 @@ function SimpleTable(props) {
             return (
               <TableRow key={n.id}>
                 <TableCell>{n.time.toLocaleDateString()}</TableCell>
-                <TableCell numeric>{n.price}</TableCell>
+                <TableCell className={classes[n.type]} numeric>
+                  {n.price}
+                </TableCell>
                 <TableCell numeric>{n.amount}</TableCell>
               </TableRow>
             );

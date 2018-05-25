@@ -20,7 +20,7 @@ const styles = theme => ({
     textAlign: 'end',
   },
   header: {
-    backgroundColor: theme.bitsoColors.navyHeaders,
+    backgroundColor: theme.bitsoColors.regularNavy,
   },
 });
 

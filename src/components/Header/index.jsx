@@ -25,7 +25,10 @@ const styles = theme => ({
 });
 
 const Header = props => {
-  const { classes, theme } = props;
+  const { classes, theme, changeTheme } = props;
+
+  const onThemeChange = (evt, checked) => changeTheme(checked ? 'dark' : 'light');
+
   return (
     <header className="App-header" className={classes.root}>
       <AppBar position="static" className={classes.header}>
@@ -51,7 +54,12 @@ const Header = props => {
             buttonText="Usuario"
             menuItems={[{ text: 'lorem', onClick: () => {} }, { text: 'ipsum', onClick: () => {} }]}
           />
-          <Switch value="theme" color="secondary" checked={theme === 'dark'} />
+          <Switch
+            value="theme"
+            color="secondary"
+            checked={theme === 'dark'}
+            onChange={onThemeChange}
+          />
         </Toolbar>
       </AppBar>
     </header>

@@ -65,6 +65,7 @@ export const fetchAvailableBooksWithTicker = () => (dispatch, getState) => {
 export default function reducer(
   state = {
     theme: 'dark',
+    selectedBook: 'btc_mxn',
     availableBooks: [],
     books: {},
   },

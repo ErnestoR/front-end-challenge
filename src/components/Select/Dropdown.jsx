@@ -4,20 +4,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 // import { ExpandMore } from '@material-ui/icons';
 
 class Dropdown extends Component {
-  state = {
-    value: this.props.value || '',
-  };
-
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
-
   render() {
-    const { className, name, items = [] } = this.props;
+    const { className, name, value, items = [], onChange } = this.props;
 
     return (
       <div className={className}>
-        <Select value={this.state.value} onChange={this.handleChange} displayEmpty name={name}>
+        <Select value={value} onChange={onChange} displayEmpty name={name}>
           {items.map((item, i) => (
             <MenuItem key={i} value={item.value}>
               {item.text}

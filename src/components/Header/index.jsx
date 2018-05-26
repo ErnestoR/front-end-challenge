@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Logo from '../Logo';
 import Button from '../Button';
-import { MenuButton } from '../Select';
+import { MenuButton, Dropdown } from '../Select';
 
 const styles = theme => ({
   root: {
@@ -24,7 +24,7 @@ const styles = theme => ({
 });
 
 const Header = props => {
-  const { classes, theme, changeTheme } = props;
+  const { classes, theme, changeTheme, selectedBook, dropdownBooks } = props;
 
   const onThemeChange = (evt, checked) => changeTheme(checked ? 'dark' : 'light');
 
@@ -36,9 +36,11 @@ const Header = props => {
           <Typography variant="title" color="inherit">
             | Exchange
           </Typography>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            1 BTC = 000,000.00 MXN |
-          </Typography>
+          <Dropdown
+            // className={props.classes.bitsoDropDown}
+            value={selectedBook}
+            items={dropdownBooks}
+          />
           <MenuButton
             buttonText="Wallet"
             menuItems={[{ text: 'lorem', onClick: () => {} }, { text: 'ipsum', onClick: () => {} }]}

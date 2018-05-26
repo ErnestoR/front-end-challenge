@@ -16,9 +16,7 @@ const styles = theme => ({
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchAvailableBooksWithTicker().then(x => {
-      debugger;
-    });
+    this.props.fetchAvailableBooksWithTicker();
   }
 
   render() {

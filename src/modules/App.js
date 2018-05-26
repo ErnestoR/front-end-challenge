@@ -24,22 +24,12 @@ const fetchAvailableBooks = () => dispatch => {
     type: FETCH_AVAIL_BOOK_INIT,
   });
 
-  return getAvailableBooks().then(books => {
-    const mappedBooks = books.map(({ book }) => {
-      const [base, exchange] = book.split('_');
-
-      return {
-        book,
-        base,
-        exchange,
-      };
-    });
-
-    return dispatch({
+  return getAvailableBooks().then(availableBooks =>
+    dispatch({
       type: FETCH_AVAIL_BOOK_SUCCESS,
-      availableBooks: mappedBooks,
-    });
-  });
+      availableBooks,
+    })
+  );
 };
 
 const fetchTicker = book => dispatch => {
@@ -47,7 +37,12 @@ const fetchTicker = book => dispatch => {
     type: FETCH_TICKER_BOOK_INIT,
   });
 
-  return getTicker(book);
+  return getTicker(book).then(ticker =>
+    dispatch({
+      type: FETCH_TICKER_BOOK_SUCCESS,
+      ticker,
+    })
+  );
 };
 
 export const fetchAvailableBooksWithTicker = () => (dispatch, getState) => {
@@ -55,19 +50,11 @@ export const fetchAvailableBooksWithTicker = () => (dispatch, getState) => {
     type: FETCH_TICKER_BOOK_INIT,
   });
 
-  return dispatch(fetchAvailableBooks())
-    .then(() => {
-      const state = getState();
+  return dispatch(fetchAvailableBooks()).then(() => {
+    const state = getState();
 
-      // return Promise.all([dispatch(fetchTicker('btc_mxn')), dispatch(fetchTicker('eth_mxn'))]).then(
-      //   x => {
-      //     debugger;
-      //   }
-      // );
-    })
-    .then(x => {
-      debugger;
-    });
+    return Promise.all(state.App.availableBooks.map(book => dispatch(fetchTicker(book))));
+  });
 };
 
 // export function loadAvailableBooks(themeType) {
@@ -79,6 +66,7 @@ export default function reducer(
   state = {
     theme: 'dark',
     availableBooks: [],
+    books: {},
   },
   action = {}
 ) {
@@ -91,9 +79,38 @@ export default function reducer(
       };
     }
     case FETCH_AVAIL_BOOK_SUCCESS: {
+      const { availableBooks } = action;
+      let books = {};
+      let availBook = [];
+
+      const mappedBooks = availableBooks.forEach(bookItem => {
+        books = {
+          ...books,
+          [bookItem.book]: {
+            ...bookItem,
+          },
+        };
+        availBook = [...availBook, bookItem.book];
+      });
+
       return {
         ...state,
-        availableBooks: action.availableBooks,
+        availableBooks: availBook,
+        books,
+      };
+    }
+    case FETCH_TICKER_BOOK_SUCCESS: {
+      const { ticker } = action;
+
+      return {
+        ...state,
+        books: {
+          ...state.books,
+          [ticker.book]: {
+            ...state.books[ticker.book],
+            ...ticker,
+          },
+        },
       };
     }
 

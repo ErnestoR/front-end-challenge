@@ -2,14 +2,13 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
-import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 
 import Logo from '../Logo';
 import Button from '../Button';
-import { MenuButton, Dropdown } from '../Select';
+import { MenuButton } from '../Select';
 
 const styles = theme => ({
   root: {
@@ -30,7 +29,7 @@ const Header = props => {
   const onThemeChange = (evt, checked) => changeTheme(checked ? 'dark' : 'light');
 
   return (
-    <header className="App-header" className={classes.root}>
+    <header className={classes.root}>
       <AppBar position="static" className={classes.header}>
         <Toolbar>
           <Logo />

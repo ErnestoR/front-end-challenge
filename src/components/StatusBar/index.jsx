@@ -2,7 +2,7 @@ import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import { withStyles } from '@material-ui/core/styles';
 
-import { MenuButton, Dropdown } from '../Select';
+import { Dropdown } from '../Select';
 import DisplayField from '../DisplayField';
 
 const styles = theme => ({

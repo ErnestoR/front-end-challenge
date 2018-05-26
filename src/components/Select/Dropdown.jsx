@@ -1,7 +1,7 @@
-import React, { Component, Children } from 'react';
+import React, { Component } from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { ExpandMore } from '@material-ui/icons';
+// import { ExpandMore } from '@material-ui/icons';
 
 class Dropdown extends Component {
   state = {
@@ -13,7 +13,7 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { className, name, children, items = [] } = this.props;
+    const { className, name, items = [] } = this.props;
 
     return (
       <div className={className}>

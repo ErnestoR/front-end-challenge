@@ -1,5 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import ReduxThunk from 'redux-thunk';
+
 import modules from '../modules';
 
 const configureStore = () => {
@@ -8,9 +10,7 @@ const configureStore = () => {
   const store = createStore(
     modules,
     persistedState,
-    composeWithDevTools()
-    // applyMiddleware(...middleware)
-    // other store enhancers if any
+    composeWithDevTools(applyMiddleware(ReduxThunk))
   );
 
   return store;

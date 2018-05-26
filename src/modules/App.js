@@ -1,9 +1,23 @@
+import { getAvailableBooks } from '../api';
+
 const APP_SWITCH_THEME = 'APP_SWITCH_THEME';
 
 // Action Creators
-export function changeTheme(themeType) {
+export const changeTheme = themeType => {
   return { type: APP_SWITCH_THEME, themeType };
-}
+};
+
+export const loadAvailableBooks = () => dispatch => {
+  // dispatch({});
+
+  return getAvailableBooks().then(data => {
+    debugger;
+  });
+};
+
+// export function loadAvailableBooks(themeType) {
+//   return { type: APP_SWITCH_THEME, themeType };
+// }
 
 // Reducer
 export default function reducer(

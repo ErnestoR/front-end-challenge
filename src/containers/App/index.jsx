@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
-import Header from './containers/Header';
-import StatusBar from './components/StatusBar';
-import LastTrades from './components/LastTrades';
-
-import './App.css';
+import Header from '../Header';
+import StatusBar from '../../components/StatusBar';
+import LastTrades from '../../components/LastTrades';
+import { loadAvailableBooks } from '../../modules/App';
 
 const styles = theme => ({
   container: {
@@ -15,6 +15,8 @@ const styles = theme => ({
 });
 
 class App extends Component {
+  componentDidMount() {}
+
   render() {
     return (
       <div className="App">
@@ -34,4 +36,11 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+const mapDispatchToProps = {
+  loadAvailableBooks,
+};
+
+const StyledApp = withStyles(styles)(App);
+
+export default connect(null, mapDispatchToProps)(StyledApp);
+// export default ;

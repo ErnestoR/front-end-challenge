@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Header from '../Header';
 import StatusBar from '../../components/StatusBar';
 import LastTrades from '../../components/LastTrades';
-import { fetchAvailableBooks } from '../../modules/App';
+import { fetchAvailableBooksWithTicker } from '../../modules/App';
 
 const styles = theme => ({
   container: {
@@ -16,9 +16,9 @@ const styles = theme => ({
 
 class App extends Component {
   componentDidMount() {
-    // this.props.fetchAvailableBooks().then(x => {
-    //   debugger;
-    // });
+    this.props.fetchAvailableBooksWithTicker().then(x => {
+      debugger;
+    });
   }
 
   render() {
@@ -41,7 +41,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  fetchAvailableBooks,
+  fetchAvailableBooksWithTicker,
 };
 
 const StyledApp = withStyles(styles)(App);

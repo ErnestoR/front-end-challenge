@@ -38,6 +38,9 @@ export const theme = type =>
         main: '#f0f2f2',
         dark: bitsoColors.backgroundNavy,
       },
+      secondary: {
+        main: bitsoColors.mediumGreen,
+      },
     },
     typography: {
       fontFamily: ['DINPro-Regular', 'Arial', 'sans-serif'].join(','),

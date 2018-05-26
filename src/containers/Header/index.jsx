@@ -1,16 +1,16 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
-import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
 
 import { changeTheme } from '../../modules/App';
 import Logo from '../../components/Logo';
 import Button from '../../components/Button';
-import { MenuButton, Dropdown } from '../../components/Select';
+import { MenuButton, LoadingDropdown } from '../../components/Select';
 
 const styles = theme => ({
   root: {
@@ -26,7 +26,7 @@ const styles = theme => ({
 });
 
 const Header = props => {
-  const { classes, theme, changeTheme, selectedBook, dropdownBooks } = props;
+  const { classes, theme, changeTheme, selectedBook, dropdownBooks, isLoading } = props;
 
   const onThemeChange = (evt, checked) => changeTheme(checked ? 'dark' : 'light');
 
@@ -38,10 +38,11 @@ const Header = props => {
           <Typography variant="title" color="inherit">
             | Exchange
           </Typography>
-          <Dropdown
-            // className={props.classes.bitsoDropDown}
+          <LoadingDropdown
+            className={classes.flex}
+            isLoading={isLoading}
             value={selectedBook}
-            items={dropdownBooks}
+            data={dropdownBooks}
           />
           <MenuButton
             buttonText="Wallet"
@@ -71,6 +72,7 @@ const Header = props => {
 
 const mapStateToProps = state => ({
   theme: state.App.theme,
+  isLoading: state.App.isLoading,
   selectedBook: state.App.selectedBook,
   dropdownBooks: state.App.availableBooks.map(bookId => {
     const { book, ask } = state.App.books[bookId];

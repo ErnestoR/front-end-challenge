@@ -47,14 +47,20 @@ const fetchTicker = book => dispatch => {
 
 export const fetchAvailableBooksWithTicker = () => (dispatch, getState) => {
   dispatch({
-    type: FETCH_TICKER_BOOK_INIT,
+    type: FETCH_ALL_BOOKS_TICKER_INIT,
   });
 
-  return dispatch(fetchAvailableBooks()).then(() => {
-    const state = getState();
+  return dispatch(fetchAvailableBooks())
+    .then(() => {
+      const state = getState();
 
-    return Promise.all(state.App.availableBooks.map(book => dispatch(fetchTicker(book))));
-  });
+      return Promise.all(state.App.availableBooks.map(book => dispatch(fetchTicker(book))));
+    })
+    .then(() => {
+      return dispatch({
+        type: FETCH_ALL_BOOKS_TICKER_SUCCESS,
+      });
+    });
 };
 
 // export function loadAvailableBooks(themeType) {
@@ -66,6 +72,7 @@ export default function reducer(
   state = {
     theme: 'dark',
     selectedBook: 'btc_mxn',
+    isLoading: true,
     availableBooks: [],
     books: {},
   },
@@ -79,6 +86,7 @@ export default function reducer(
         theme: action.themeType,
       };
     }
+
     case FETCH_AVAIL_BOOK_SUCCESS: {
       const { availableBooks } = action;
       let books = {};
@@ -112,6 +120,20 @@ export default function reducer(
             ...ticker,
           },
         },
+      };
+    }
+
+    case FETCH_ALL_BOOKS_TICKER_INIT: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+
+    case FETCH_ALL_BOOKS_TICKER_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
       };
     }
 
